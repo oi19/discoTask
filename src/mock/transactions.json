@@ -1,0 +1,112 @@
+{
+   "data": [
+{
+        "title":"Uber",
+        "transactionPaymentMethod":2,
+        "reason":"work",
+        "expenses":50,
+        "currency":1,
+        "date":"20/1/2024",
+        "category":3,
+        "transactionID":1
+},
+{
+        "title":"Uber",
+        "transactionPaymentMethod":2,
+        "reason":"personal",
+        "expenses":50,
+        "currency":1,
+        "date":"20/1/2024",
+        "category":3,
+                "transactionID":2
+
+},
+{
+        "title":"T-shirt",
+        "transactionPaymentMethod":2,
+        "reason":"personal",
+        "expenses":50,
+        "currency":1,
+        "date":"20/1/2024",
+        "category":2,
+        "transactionID":3
+
+},
+{
+        "title":"T-shirt",
+        "transactionPaymentMethod":2,
+        "reason":"personal",
+        "expenses":50,
+        "currency":1,
+        "date":"20/1/2024",
+        "category":3,
+                "transactionID":4
+
+},
+{
+     "title":"T-shirt",
+        "transactionPaymentMethod":2,
+        "reason":"personal",
+        "expenses":50,
+        "currency":1,
+        "date":"20/1/2024",
+        "category":2,
+                "transactionID":5
+
+},
+{
+       "title":"T-shirt",
+        "transactionPaymentMethod":2,
+        "reason":"personal",
+        "expenses":50,
+        "currency":1,
+        "date":"20/1/2024",
+        "category":2,
+                "transactionID":6
+
+},
+{
+          "title":"T-shirt",
+        "transactionPaymentMethod":2,
+        "reason":"personal",
+        "expenses":50,
+        "currency":1,
+        "date":"20/1/2024",
+        "category":2,
+                "transactionID":7
+
+},
+{
+         "title":"T-shirt",
+        "transactionPaymentMethod":2,
+        "reason":"personal",
+        "expenses":50,
+        "currency":1,
+        "date":"20/1/2024",
+        "category":1,
+                "transactionID":8
+},
+{
+     "title":"T-shirt",
+        "transactionPaymentMethod":2,
+        "reason":"work",
+        "expenses":50,
+        "currency":1,
+        "date":"20/1/2024",
+        "category":2,
+                "transactionID":9
+
+},
+{
+     "title":"T-shirt",
+        "transactionPaymentMethod":2,
+        "reason":"work",
+        "expenses":50,
+        "currency":1,
+        "date":"20/1/2024",
+        "category":1,
+                "transactionID":10
+
+}
+    ]
+}
