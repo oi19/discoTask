@@ -33,7 +33,7 @@ A short cycle from Splash screen with login UX heading to the Budget Section
           - sharedComponent.tsx
           - styles.tsx
           
-  useCases(can be divided to multiple folders)
+  - useCases(can be divided to multiple folders)
     -  Infrastructure
       - Api(logicCore api logic(including interceptors & requests )
       - Services 
