@@ -72,5 +72,5 @@
 - navigatetionRef (navigation by reference )
 - React Query & Zod & React-Form-Hook with Controller
 - Moment
-- {progress} react-native-progress
+- react-native-progress
 - react-native-gesture-handler/Swipeable (applied on each transaction item so it can have more than just click into details screen , delete, add to favorite and many more ideas)
