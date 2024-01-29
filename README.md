@@ -2,7 +2,7 @@ d# discoTask
 
 A short cycle from Splash screen with login UX heading to the Budget Section
 
--  Code Structure (MVVVM Architecture)
+-  *Code Structure (MVVVM Architecture)*
     -  Application(state management)
         - Reducers 
         - Model
@@ -33,7 +33,7 @@ A short cycle from Splash screen with login UX heading to the Budget Section
             - sharedComponent.tsx
             - styles.tsx
             
-    - useCases(can be divided to multiple folders)
+    - *useCases(can be divided to multiple folders)*
       -  Infrastructure
         - Api(logicCore api logic(including interceptors & requests )
         - Services 
@@ -55,7 +55,7 @@ A short cycle from Splash screen with login UX heading to the Budget Section
           - useLocalStorage.ts 
 
 
-  - #Component used#
+  - *Component used*
     - Splash.tsx
     - LoginScreen.tsx(including multiple common and shared components)
     - BudgetScreen.tsx(inital route of the budget Stack , includes 
