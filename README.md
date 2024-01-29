@@ -1,7 +1,7 @@
 # discoTask
 
 ---
-Disco Task is an *React Native* project using *Expo*  resembles a short journy from splash to the budget section passing through the Auth UX making sure a full cycle is experienced 
+#### Disco Task is an *React Native* project using *Expo*  resembles a short journy from splash to the budget section passing through the Auth UX making sure a full cycle is experienced 
 ---
 
 ## Code Structure (MVVM Architecture , SOLID Princples and SOC )
