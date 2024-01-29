@@ -1,8 +1,10 @@
 # discoTask
 
 ---
+Disco Task is an *React Native* project using *Expo*  resembles a short journy from splash to the budget section passing through the Auth UX making sure a full cycle is experienced 
+---
 
-## Code Structure (MVVM Architecture)
+## Code Structure (MVVM Architecture , SOLID Princples and SOC )
 
 - ### Application (State Management)
   - Reducers 
@@ -57,7 +59,7 @@
 
 ---
 
-## Components
+## Components (Solid Principles Implemented espically SRP, OCD and LSP)
 - Splash.tsx
 - LoginScreen.tsx (Including Multiple Common and Shared Components using React Query, Zod, and React Form Hook)
 - BudgetScreen.tsx (Initial Route of the Budget Stack
@@ -74,3 +76,19 @@
 - Moment
 - react-native-progress
 - react-native-gesture-handler/Swipeable (applied on each transaction item so it can have more than just click into details screen , delete, add to favorite and many more ideas)
+
+
+# Setup
+   ```shell script
+git clone https://github.com/oi19/discoTask
+cd discoTask
+```
+Run the following command to run your server.
+
+
+```shell script
+  "start": "expo start",
+  "android": "expo start --android",
+  "ios": "expo start --ios",
+  "web": "expo start --web"
+```
