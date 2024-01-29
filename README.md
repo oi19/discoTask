@@ -59,9 +59,8 @@ A short cycle from Splash screen with login UX heading to the Budget Section
     - Splash.tsx
     - LoginScreen.tsx(including multiple common and shared components)
     - BudgetScreen.tsx(inital route of the budget Stack that includes 
-          - simulatedNavBar
-          - budget analysis section (could be a possible teaser for more advanced in detail analysis in single component)
-      
+      - simulatedNavBar
+      - budget analysis section (could be a possible teaser for more advanced in detail analysis in single component)
     - Transactions.tsx(including search bar  ,transactionsList and calender with many filtration options)
     - TransactionDetails(including Reciept , share option and open for more possible details )
   
