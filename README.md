@@ -55,7 +55,7 @@ A short cycle from Splash screen with login UX heading to the Budget Section
           - useLocalStorage.ts 
 
 
-  - Component used
+  - #Component used#
     - Splash.tsx
     - LoginScreen.tsx(including multiple common and shared components)
     - BudgetScreen.tsx(inital route of the budget Stack , includes 
