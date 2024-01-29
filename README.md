@@ -16,8 +16,8 @@ A short cycle from Splash screen with login UX heading to the Budget Section
     - BudgetStack 
     - onBoarding
      
-   - domain(interfaces defining contracts with APIs and domain services )
-
+  - domain(interfaces defining contracts with APIs and domain services )
+     
   - Presentation
     - screens
       - screen
@@ -44,16 +44,14 @@ A short cycle from Splash screen with login UX heading to the Budget Section
       - Styles.tsx
       - Theme.ts
       - validation(schemas).ts 
- /hooks
- useCustomHookA.ts
- useCustomHookB.ts
-/auth
-useAuthentication.ts
-useUserPermissions.ts
-/data
-useApiData.ts
-useLocalStorage.ts
-/ui
-useModal.ts
-useSnackbar.ts
+    - hooks
+     - useCustomHookA.ts
+     - useCustomHookB.ts
+     - auth
+        - useAuthentication.ts
+        - useUserPermissions.ts
+     -data
+        - useApiData.ts
+        - useLocalStorage.ts 
+
 
