@@ -29,8 +29,7 @@ export const postData = async (endPoint: string, data?: any) => {
 
 export const postPromise = new Promise((resolve, reject) => {
     setTimeout(() => {
-        console.warn('Omar')
-    }, 10000)
+    }, 300)
     resolve('OmarOk')
 })
 

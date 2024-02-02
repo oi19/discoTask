@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
 import RenderBudgetScreen from "../../components/common/RenderBudgetScreen/RenderBudgetScreen";
+
+import { useNavigation } from "@react-navigation/native";
+
 import { BudgetRountesNames, LanguageCode, ScreenNames } from "../../../shared/constants";
 import { defaultTheme } from "../../../shared/theme";
-import { useNavigation } from "@react-navigation/native";
+
 import useTransactionFetch from "../../../hooks/useTransactionFetch";
 import { AnalysisData } from "../../../hooks/useTransactionFetch";
+
 import { transactionItem } from "../../../domain/transactions";
 
 const routes = ['all', 'personal', 'work']

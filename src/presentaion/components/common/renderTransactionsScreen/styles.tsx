@@ -1,6 +1,6 @@
-import {  I18nManager, StyleSheet } from "react-native";
-import { LanguageCode } from "../../../shared/constants";
-import { Theme } from "../../../shared/theme";
+import { Dimensions, I18nManager, Platform, StyleSheet } from "react-native";
+import { LanguageCode } from "../../../../shared/constants";
+import { Theme } from "../../../../shared/theme";
 
 
 const styles = (theme: Theme, lang: LanguageCode) => StyleSheet.create({

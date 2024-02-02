@@ -47,11 +47,11 @@ const CalendarBar = (props: ICalendarBar) => {
                         return (<TouchableOpacity key={index} style={[selectedIndex == index ? { backgroundColor: theme.color.datePeriodContainerColor, } : { backgroundColor: theme.color.buttonBackground }, styles(theme, lang).periodViewButton]} onPress={() => {
                             //@ts-ignore
                             let newStartDate = moment().subtract(period.number, period.type)
-                            setStartTempDate(newStartDate)
+                                                        setStartTempDate(newStartDate)
                             setEndTempDate(moment())
                             setNextButton(false)
                             setPrevButton(false)
-                            setSelectedIndex(index)
+setSelectedIndex(index)
                         }}>
                             <Text style={[selectedIndex == index ? { color: theme.color.white } : { color: theme.color.primaryDiscoColor }, { fontSize: I18nManager.isRTL ? moderateScale(14) : moderateScale(12) }]}>{period.title}</Text>
                         </TouchableOpacity>)
@@ -87,24 +87,31 @@ const CalendarBar = (props: ICalendarBar) => {
     }
 
     const onConfirm = (): void => {
-        if (endTempDate != null && !(isNextButton || isPrevButton)) {
-
-            let weekBefore = moment(endTempDate).subtract(1, 'week').format('DD MMMM')
-            let monthBefore = moment(endTempDate).subtract(1, 'months').format('DD MMMM')
-            let threeMonthsBefore = moment(endTempDate).subtract(3, 'months').format('DD MMMM')
-            if ((moment(startTempDate)?.format('DD MMMM') !== weekBefore && moment(startTempDate)?.format('DD MMMM') !== monthBefore && moment(startTempDate)?.format('DD MMMM') !== threeMonthsBefore)) {
-                setSelectedIndex(-1)
+        if (endTempDate != null) {
+            if (isNextButton || isPrevButton) {
+                setCalendarVisible(false)
+                setIsCalendarVisibleFromNav(false)
+            } else {
+                let weekBefore = moment(endTempDate).subtract(1, 'week').format('DD MMMM')
+                let monthBefore = moment(endTempDate).subtract(1, 'months').format('DD MMMM')
+                let threeMonthsBefore = moment(endTempDate).subtract(3, 'months').format('DD MMMM')
+                if ((moment(startTempDate)?.format('DD MMMM') !== weekBefore && moment(startTempDate)?.format('DD MMMM') !== monthBefore && moment(startTempDate)?.format('DD MMMM') !== threeMonthsBefore)) {
+                    setSelectedIndex(-1)
+                }
+                setStartDate(startTempDate)
+                setEndDate(endTempDate)
+                onChooseDate({ startDate: startTempDate, endDate: endTempDate })
             }
-            setStartDate(startTempDate)
-            setEndDate(endTempDate)
-            onChooseDate({ startDate: startTempDate, endDate: endTempDate })
-
+            setCalendarVisible(false)
+            setIsCalendarVisibleFromNav(false)
         }
-        setCalendarVisible(false)
-        setIsCalendarVisibleFromNav(false)
+        else {
+            null
+        }
     }
 
     const onCancel = (): void => {
+                // setSelectedIndex(-1)s
         setCalendarVisible(false)
         setIsCalendarVisibleFromNav(false)
     }
@@ -149,11 +156,11 @@ const CalendarBar = (props: ICalendarBar) => {
                 return renderSingleDateContainer(startDate, endDate)
             }
         } else {
-            return renderSingleDateContainer(null, new Date())
+            return renderSingleDateContainer(null, moment().locale(lang).format())
         }
     }
 
-
+    
     return (
         <View style={{}}>
             {
@@ -169,7 +176,7 @@ const CalendarBar = (props: ICalendarBar) => {
                                     lang={lang}
                                     allowRangeSelection={true}
                                     swipe={true}
-                                    initialDate={startDate ? startDate : new Date()}
+                                    initialDate={new Date()}
                                     nextComponent={<Image source={require('../../../../assets/icons/back_btn.png')} resizeMode={'contain'} style={styles(theme, lang).smallArrowRight} />}
                                     previousComponent={<Image source={require('../../../../assets/icons/back_btn.png')} resizeMode={'contain'} style={styles(theme, lang).smallArrowLeft} />}
                                     textStyle={styles(theme, lang).calenderText}
@@ -180,14 +187,14 @@ const CalendarBar = (props: ICalendarBar) => {
                                     todayBackgroundColor={theme.color.white}
                                     width={Dimensions.get('screen').width - 16}
                                     onDateChange={onDateChange}
-                                    selectedStartDate={startDate ? startDate : null}
-                                    selectedEndDate={endDate ? endDate : null}
+                                    selectedStartDate={startDate?startDate:null}
+                                    selectedEndDate={endDate?endDate:null}
                                 />
                                 <View style={styles(theme, lang).buttomsContainer}>
                                     <View style={{ width: '100%', }}>
                                         <PrimaryButton
                                             title={'Done'}
-                                            onPress={() => { onConfirm() }}
+                                            onPress={onConfirm }
                                             isLoading={false}
                                             titleFontFamily={""}
                                             titleFontSize={0}

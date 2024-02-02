@@ -1,6 +1,7 @@
 import { BudgetCatergory, BudgetRountesNames } from '../shared/constants';
 import { data as transactions } from '../mock/transactions.json';
 import { transactionItem } from '../domain/transactions';
+import moment from 'moment';
 
 interface CategoryPercentage {
     percentage: string;
@@ -17,7 +18,7 @@ export interface AnalysisData {
     totalExpenses: number;
 }
 
-const useTransactionFetch = (routeID: BudgetRountesNames): AnalysisResult => {
+const useTransactionFetch = (routeID: BudgetRountesNames,date={startDate:moment(),endDate:moment().subtract(1,'month')}): AnalysisResult => {
     let totalExpenses = 0;
     const categoryExpenses: Record<string, number> = {};
 
@@ -25,7 +26,11 @@ const useTransactionFetch = (routeID: BudgetRountesNames): AnalysisResult => {
         if (routeID == BudgetRountesNames.ALL || item.reason == routeID) {
             totalExpenses += item.expenses;
             categoryExpenses[item.category] = (categoryExpenses[item.category] || 0) + item.expenses;
-            return item
+            if (date.startDate && date.endDate && moment(item.date) > date.startDate && moment(item.date)<date.endDate ) {   
+                return item
+            } else {
+                return item
+            }
         }
     });
 

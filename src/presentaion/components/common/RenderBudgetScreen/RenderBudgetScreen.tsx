@@ -102,7 +102,6 @@ const RenderBudgetScreen = (props: InputProps) => {
 
     return (
         <View style={styles(theme, lang).rootStyle} >
-
             {renderHeader()}
             <SimulatedTabBar
                 routes={routes}
@@ -115,7 +114,7 @@ const RenderBudgetScreen = (props: InputProps) => {
                 lang={lang}
                 theme={theme}
                 isCalendarVisibleFromNav={isCalendarVisible}
-                setIsCalendarVisibleFromNav={() => setCalendarVisible(!isCalendarVisible)}
+                setIsCalendarVisibleFromNav={setCalendarVisible}
                 onChooseDate={() => {
                     console.warn('meroo');
                 }}

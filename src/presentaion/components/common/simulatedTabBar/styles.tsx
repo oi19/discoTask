@@ -1,7 +1,6 @@
-import { Dimensions, I18nManager, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { LanguageCode } from '../../../../shared/constants';
 import { Theme } from '../../../../shared/theme';
-let { width, height } = Dimensions.get("window");
 
 
 const styles = (theme: Theme, lang: LanguageCode) =>

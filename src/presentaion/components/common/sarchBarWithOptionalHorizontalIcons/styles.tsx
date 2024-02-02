@@ -1,6 +1,6 @@
-import {  I18nManager, StyleSheet } from "react-native";
-import { LanguageCode } from "../../../shared/constants";
-import { Theme } from "../../../shared/theme";
+import { Dimensions, I18nManager, StyleSheet } from "react-native";
+import { LanguageCode } from "../../../../shared/constants";
+import { Theme } from "../../../../shared/theme";
 
 
 const styles = (theme: Theme, lang: LanguageCode) => StyleSheet.create({
@@ -8,7 +8,7 @@ const styles = (theme: Theme, lang: LanguageCode) => StyleSheet.create({
         flex: 1,
     },
     searchBarContainer: {
-        marginTop: 16,
+        marginVertical: 16,
         marginHorizontal: 16,
         flexDirection: 'row',
         alignItems: 'center'

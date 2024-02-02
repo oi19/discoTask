@@ -15,6 +15,10 @@ type InputProps = {
 const SimulatedTabBar = (props: InputProps) => {
     const { onRoutePress, routes, currentRoute } = props
 
+   const capitalizeText=(text:string)=> {
+     return text.charAt(0).toUpperCase() + text.slice(1);
+    }
+
     return (
         <View style={styles(defaultTheme, LanguageCode.EN).root}>
             {
@@ -27,7 +31,7 @@ const SimulatedTabBar = (props: InputProps) => {
                         >
                             <Text
                                 style={isFocused ? styles(defaultTheme, LanguageCode.EN).focusedRouteTextStyle : styles(defaultTheme, LanguageCode.EN).routeTextStyle}>
-                                {route}
+                                {capitalizeText(route)}
                             </Text>
                         </TouchableOpacity>
                     )

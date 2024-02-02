@@ -1,12 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, Image, FlatList, TouchableOpacity, RefreshControl, ActivityIndicator, Animated, I18nManager, } from 'react-native';
-import { Currency_Values, LanguageCode, Payment_Method, SWIP_TYPE, ScreenNames, } from '../../../../shared/constants';
-import styles from './styles';
-import { Theme } from '../../../../shared/theme';
-import moment from 'moment';
+import React, {  useState } from 'react';
+import { View, Text, Image, FlatList, TouchableOpacity, RefreshControl, ActivityIndicator, I18nManager, } from 'react-native';
+
 import Swipeable from 'react-native-gesture-handler/Swipeable';
+
+import { Currency_Values, LanguageCode, Payment_Method, SWIP_TYPE, ScreenNames, } from '../../../../shared/constants';
+import { Theme } from '../../../../shared/theme';
+
 import { transactionItem } from '../../../../domain/transactions';
+
 import { useNavigation } from '@react-navigation/native';
+
+import styles from './styles';
+
 
 export interface InputProps {
   theme: Theme;
@@ -22,7 +27,7 @@ export interface InputProps {
 
 const TransactionsList = (props: InputProps) => {
   const navigation = useNavigation();
-  const { lang, theme, transactionList, refreshing, onRefresh, numberOfTransactionsToShow = null } = props;
+  const { lang, theme, transactionList, refreshing, onRefresh, numberOfTransactionsToShow = null ,loading} = props;
   const [isLoadingVisible, setIsLoadingVisible] = useState<boolean>(false)
   let row: Array<any> = [];
   let prevOpenedRow;
@@ -50,16 +55,6 @@ const TransactionsList = (props: InputProps) => {
       default:
         return ' $ '
     }
-  }
-
-  const findItem = (itemList: any, value: string,) => {
-    if (!value) {
-      return null
-    }
-    let filteredItem = itemList?.find((e) => {
-      return e.value === value
-    })
-    return filteredItem?.shortName
   }
 
   const swipButtonHandler = (id, index, type) => {
@@ -149,10 +144,9 @@ const TransactionsList = (props: InputProps) => {
 
   return (
     <View style={styles(theme, lang).transactionListContainer}>
-
       <FlatList
         data={transactionList}
-        keyExtractor={(item, index) => 'key' + index}
+        keyExtractor={(index) => 'key' + index}
         renderItem={renderTransactionItems}
         onEndReachedThreshold={0.01}
         ItemSeparatorComponent={(index) => { return (index) < numberOfTransactionsToShow && <View style={styles(theme, lang).separator} /> }}
@@ -167,6 +161,17 @@ const TransactionsList = (props: InputProps) => {
             />
           )
         }
+          // ListEmptyComponent={() => {
+          //   if (loading && transactionList.length == 0) {
+          //   return (
+          //       <ActivityIndicator
+          //         style={styles(theme, lang).indicatorStyle}
+          //         size={'large'}
+          //         color={theme.color.azure}
+          //       />
+          //   );
+          //   }
+          // }}
       />
     </View>
   );
