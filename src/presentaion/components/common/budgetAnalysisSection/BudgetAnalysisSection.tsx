@@ -1,5 +1,5 @@
 import React from "react"
-import { View, Text, Image } from 'react-native'
+import { View, Text, Image,TouchableOpacity } from 'react-native'
 
 import { Theme } from "../../../../shared/theme"
 import { BudgetCatergory, LanguageCode } from "../../../../shared/constants"
@@ -22,8 +22,6 @@ type categoryAnalysis = {
 const BudgetAnalysisSection = (props: budgetAnalysisProps) => {
     const { analysisData: { categoryPercentages: data, totalExpenses }, theme, lang } = props;
 
-    console.warn(data)
-
     const findCategoryTitle = (categoryType: BudgetCatergory) => {
         switch (Number(categoryType)) {
             case BudgetCatergory.FOOD:
@@ -36,7 +34,6 @@ const BudgetAnalysisSection = (props: budgetAnalysisProps) => {
     }
 
     const findCategoryTypeImage = (categoryType: BudgetCatergory) => {
-        console.warn()
         switch (Number(categoryType)) {
             case BudgetCatergory.FOOD:
                 return require('../../../../assets/icons/food_icon.png')
@@ -56,9 +53,9 @@ const BudgetAnalysisSection = (props: budgetAnalysisProps) => {
             <View>
                 {
                     data ?
-                        data.map((category: categoryAnalysis) => {
+                        data.map((category: categoryAnalysis,index) => {
                             return (
-                                <View style={styles(theme, lang).analysisContainer}>
+                                <TouchableOpacity key={index} style={styles(theme, lang).analysisContainer}>
                                     <View style={styles(theme, lang).category} >
                                         <Image
                                             style={styles(theme, lang).categoryImageStyle}
@@ -66,7 +63,7 @@ const BudgetAnalysisSection = (props: budgetAnalysisProps) => {
                                         <Text style={styles(theme, lang).categoryText}>{findCategoryTitle(category?.categoryType)}</Text>
                                     </View>
                                     <Text style={styles(theme, lang).categoryPercentage}>{category?.percentage}</Text>
-                                </View>
+                                </TouchableOpacity>
                             )
                         })
                         :

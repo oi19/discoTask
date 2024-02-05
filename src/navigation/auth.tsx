@@ -10,7 +10,7 @@ import BudgetStack from "./budgetStack";
 
 const Stack = createStackNavigator()
 
-export function AuthStack(props) {
+export function AuthStack() {
     return (
         <Stack.Navigator screenOptions={{ headerShown: false }} >
             {/* <Stack.Screen name="onboardin" component={OnboardingScreen} /> */}

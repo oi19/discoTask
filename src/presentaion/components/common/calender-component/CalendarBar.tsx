@@ -18,6 +18,7 @@ interface ICalendarBar {
 }
 
 const CalendarBar = (props: ICalendarBar) => {
+    const { lang, theme, onChooseDate, isCalendarVisibleFromNav, setIsCalendarVisibleFromNav, showCalendarBarHeader = false } = props
     const [isCalendarVisible, setCalendarVisible] = useState<boolean>(false)
     const [isNextButton, setNextButton] = useState<boolean>(false)
     const [isPrevButton, setPrevButton] = useState<boolean>(false)
@@ -26,7 +27,6 @@ const CalendarBar = (props: ICalendarBar) => {
     const [startTempDate, setStartTempDate] = useState<moment.Moment | null>(moment().startOf('month'))
     const [endTempDate, setEndTempDate] = useState<moment.Moment | null>(moment().endOf('month'))
     const [selectedIndex, setSelectedIndex] = useState(-1)
-    const { lang, theme, onChooseDate, isCalendarVisibleFromNav, setIsCalendarVisibleFromNav, showCalendarBarHeader = false } = props
 
     const onDateChange = (date: moment.Moment, type: string): void => {
         if (type === 'START_DATE') {
@@ -47,11 +47,11 @@ const CalendarBar = (props: ICalendarBar) => {
                         return (<TouchableOpacity key={index} style={[selectedIndex == index ? { backgroundColor: theme.color.datePeriodContainerColor, } : { backgroundColor: theme.color.buttonBackground }, styles(theme, lang).periodViewButton]} onPress={() => {
                             //@ts-ignore
                             let newStartDate = moment().subtract(period.number, period.type)
-                                                        setStartTempDate(newStartDate)
+                            setStartTempDate(newStartDate)
                             setEndTempDate(moment())
                             setNextButton(false)
                             setPrevButton(false)
-setSelectedIndex(index)
+                            setSelectedIndex(index)
                         }}>
                             <Text style={[selectedIndex == index ? { color: theme.color.white } : { color: theme.color.primaryDiscoColor }, { fontSize: I18nManager.isRTL ? moderateScale(14) : moderateScale(12) }]}>{period.title}</Text>
                         </TouchableOpacity>)
@@ -111,7 +111,6 @@ setSelectedIndex(index)
     }
 
     const onCancel = (): void => {
-                // setSelectedIndex(-1)s
         setCalendarVisible(false)
         setIsCalendarVisibleFromNav(false)
     }
@@ -176,7 +175,7 @@ setSelectedIndex(index)
                                     lang={lang}
                                     allowRangeSelection={true}
                                     swipe={true}
-                                    initialDate={new Date()}
+                                    initialDate={startDate ? startDate : new Date()}
                                     nextComponent={<Image source={require('../../../../assets/icons/back_btn.png')} resizeMode={'contain'} style={styles(theme, lang).smallArrowRight} />}
                                     previousComponent={<Image source={require('../../../../assets/icons/back_btn.png')} resizeMode={'contain'} style={styles(theme, lang).smallArrowLeft} />}
                                     textStyle={styles(theme, lang).calenderText}
@@ -187,8 +186,8 @@ setSelectedIndex(index)
                                     todayBackgroundColor={theme.color.white}
                                     width={Dimensions.get('screen').width - 16}
                                     onDateChange={onDateChange}
-                                    selectedStartDate={startDate?startDate:null}
-                                    selectedEndDate={endDate?endDate:null}
+                                    selectedStartDate={startDate}
+                                    selectedEndDate={endDate}
                                 />
                                 <View style={styles(theme, lang).buttomsContainer}>
                                     <View style={{ width: '100%', }}>
@@ -213,7 +212,7 @@ setSelectedIndex(index)
                     <View style={styles(theme, lang).calendarBarContainer}>
                         <TouchableOpacity
                             style={styles(theme, lang).calendarRightArrowContainer}
-                            onPress={() => { I18nManager.isRTL ? moveToNextDate() : moveToPrevDate() }}>
+                    onPress={() => { I18nManager.isRTL ? moveToNextDate() : moveToPrevDate() }}>
                             <Image source={require('../../../../assets/icons/back_btn.png')} resizeMode={'contain'} style={styles(theme, lang).smallArrowLeft} />
                         </TouchableOpacity>
                         <TouchableOpacity
@@ -223,7 +222,7 @@ setSelectedIndex(index)
                         </TouchableOpacity>
                         <TouchableOpacity
                             style={styles(theme, lang).calendarRightArrowContainer}
-                            onPress={() => { I18nManager.isRTL ? moveToPrevDate() : moveToNextDate() }}>
+                    onPress={() => { I18nManager.isRTL ? moveToPrevDate() : moveToNextDate() }}>
                             <Image source={require('../../../../assets/icons/back_btn.png')} resizeMode={'contain'} style={styles(theme, lang).smallArrowRight} />
                         </TouchableOpacity>
                     </View>

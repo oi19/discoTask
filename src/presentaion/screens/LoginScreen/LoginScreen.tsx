@@ -14,7 +14,7 @@ const LoginScreen = () => {
     const { onSuccess, control, errors, isSubmitting } = useLoginHook('', navigation)
 
     return <RenderLoginScreen
-        onSubmitCallback={onSuccess}
+        onSubmitCallback={()=>{navigation.navigate(ScreenNames.BUDGET)}}
         errors={errors}
         isSubmitting={isSubmitting}
         control={control}

@@ -27,11 +27,10 @@ export interface InputProps {
 
 const TransactionsList = (props: InputProps) => {
   const navigation = useNavigation();
-  const { lang, theme, transactionList, refreshing, onRefresh, numberOfTransactionsToShow = null ,loading} = props;
+  const { lang, theme, transactionList, refreshing, onRefresh, numberOfTransactionsToShow = null ,loadSkeleton} = props;
   const [isLoadingVisible, setIsLoadingVisible] = useState<boolean>(false)
   let row: Array<any> = [];
   let prevOpenedRow;
-
 
   const findTransactionPaymentMethodImage = (transactionType: Payment_Method) => {
     switch (transactionType) {
@@ -145,8 +144,8 @@ const TransactionsList = (props: InputProps) => {
   return (
     <View style={styles(theme, lang).transactionListContainer}>
       <FlatList
-        data={transactionList}
-        keyExtractor={(index) => 'key' + index}
+        data={transactionList && transactionList}
+        keyExtractor={(item) => 'key' + item.transactionID}
         renderItem={renderTransactionItems}
         onEndReachedThreshold={0.01}
         ItemSeparatorComponent={(index) => { return (index) < numberOfTransactionsToShow && <View style={styles(theme, lang).separator} /> }}
@@ -161,17 +160,29 @@ const TransactionsList = (props: InputProps) => {
             />
           )
         }
-          // ListEmptyComponent={() => {
-          //   if (loading && transactionList.length == 0) {
-          //   return (
-          //       <ActivityIndicator
-          //         style={styles(theme, lang).indicatorStyle}
-          //         size={'large'}
-          //         color={theme.color.azure}
-          //       />
-          //   );
-          //   }
-          // }}
+        ListEmptyComponent={() => {
+            if (!transactionList || (transactionList?.length == 0 && !loadSkeleton)) {
+              return (
+                <View style={styles(theme, lang).notransactionContainerStyle}>
+                  <Image
+                    style={styles(theme, lang).noTransactionImageStyle}
+                    source={require('../../../../assets/icons/food_icon.png')}
+                  />
+                  <Text style={styles(theme, lang).noTransactionTextStyle}>
+                    No TransactionList yet
+                  </Text>
+                </View>
+              );
+            } else {
+              return (
+                <ActivityIndicator
+                  style={styles(theme, lang).indicatorStyle}
+                  size={'large'}
+                  color={theme.color.azure}
+                />
+              );
+            }
+          }}
       />
     </View>
   );
